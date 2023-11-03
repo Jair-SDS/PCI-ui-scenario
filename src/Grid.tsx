@@ -16,8 +16,8 @@ const columnDefs: ColDef[] = [
     field: "discovery_date",
     headerName: "Discovery Date",
     filter: "agDateColumnFilter",
-    cellRenderer: (params: { value: string }) => {
-      return <p>{new Date(params.value).toLocaleDateString("en-US", dateOptions)}</p>;
+    valueFormatter: (params: { value: string }) => {
+      return new Date(params.value).toLocaleDateString("en-US", dateOptions);
     },
   },
   { field: "h_mag", headerName: "H (mag)" },
@@ -35,7 +35,11 @@ const columnDefs: ColDef[] = [
   {
     field: "pha",
     headerName: "Potentially Hazardous",
-    filter: "agTextColumnFilter",
+    valueFormatter: potHazardousCell,
+    filter: "agSetColumnFilter",
+    filterParams: {
+      valueFormatter: potHazardousCell,
+    },
   },
   {
     field: "orbit_class",
@@ -63,5 +67,10 @@ const NeoGrid = (): JSX.Element => {
     </div>
   );
 };
+
+function potHazardousCell(params: { value: string }) {
+  const valueData = params.value;
+  return valueData === "Y" ? "Yes" : valueData === "N" ? "No" : "";
+}
 
 export default NeoGrid;
