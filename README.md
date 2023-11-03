@@ -64,3 +64,10 @@ Within this repo is a demo UI that our team needs to make some changes to before
 7. Lastly, this grid is going to go to production soon, and other developers will begin doing work on this project. While creating this demo, considerations were not made to keep the code clean and organized. Please organize this codebase so that it is easier to find and make changes to components, as well as finding any interfaces, types, or helper functions.
 
 After completing this project, please push any changes you made to a publicly accessible GitLab or GitHub repository and include that link in an email to your contact at PCI. Thank you!
+
+#### Dev Commentaries
+
+1. The application design (CSS) is now based on Tailwind to optimize the mockup process. In terms of style, without having exact requirements, I decided to keep it minimalist.
+2. I decided to use the filter and ordering of the Ag Grid component (again without having any specific design requirement).
+3. I assumed that the page was American that is why I pick the format used in that country
+4. I stronly recomend use Vite for the development of React Frontend in order to build optimized web applications (Not used in this proyect).
