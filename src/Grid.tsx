@@ -63,6 +63,8 @@ const NeoGrid = (): JSX.Element => {
           sortable: true,
           filter: "agNumberColumnFilter",
         }}
+        enableRangeSelection={true}
+        enableRangeHandle={true}
       />
     </div>
   );
