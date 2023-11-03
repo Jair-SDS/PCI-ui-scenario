@@ -4,6 +4,8 @@ import data from "./near-earth-asteroids.json";
 import "ag-grid-community/styles/ag-grid.css";
 import "ag-grid-community/styles/ag-theme-alpine.css";
 
+var dateOptions: Intl.DateTimeFormatOptions = { year: "2-digit", month: "2-digit", day: "2-digit" };
+
 const columnDefs: ColDef[] = [
   {
     field: "designation",
@@ -14,6 +16,9 @@ const columnDefs: ColDef[] = [
     field: "discovery_date",
     headerName: "Discovery Date",
     filter: "agDateColumnFilter",
+    cellRenderer: (params: { value: string }) => {
+      return <p>{new Date(params.value).toLocaleDateString("en-US", dateOptions)}</p>;
+    },
   },
   { field: "h_mag", headerName: "H (mag)" },
   { field: "moid_au", headerName: "MOID (au)" },
@@ -42,7 +47,7 @@ const columnDefs: ColDef[] = [
 
 const NeoGrid = (): JSX.Element => {
   return (
-    <div className="ag-theme-alpine h-[calc(100vh-56px)] w-[100vw]">
+    <div className=" ag-theme-alpine h-[calc(100vh-56px)] w-[100vw] max-w-[2000px]">
       <div className="flex flex-row justify-center items-center w-full">
         <h1 className="text-2xl font-semibold p-3">Near-Earth Object Overview</h1>
       </div>
